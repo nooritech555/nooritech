@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بازی دتکتیو سرکل | نوری تک</title>
+  <meta name="description" content="بازی جذاب دتکتیو سرکل برای دریافت تخفیف ویژه">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #00796b;
+      --secondary-color: #00cbf2;
+      --accent-color: #e82600;
+      --light-color: #e0f7fa;
+      --dark-color: #004d40;
+      --text-color: #333;
+      --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: var(--light-color);
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      direction: rtl;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--dark-color), var(--primary-color));
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 800px;
+      box-shadow: var(--box-shadow);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .game-info {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: var(--box-shadow);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .info-item span:first-child {
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    #game-container {
+      width: 90vw;
+      max-width: 600px;
+      height: 90vw;
+      max-height: 600px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      border: 5px solid var(--primary-color);
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 20px;
+    }
+
+    .circle {
+      width: 12vw;
+      height: 12vw;
+      max-width: 80px;
+      max-height: 80px;
+      border-radius: 50%;
+      margin: 1.5vw;
+      display: inline-block;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      background-color: #a9ee9a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3vw;
+      color: var(--text-color);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .circle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      text-align: center;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #restart-btn {
+      display: none;
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #restart-btn:hover {
+      background-color: var(--dark-color);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .shape {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4vw;
+      color: white;
+    }
+
+    .square {
+      width: 20vw;
+      height: 20vw;
+      max-width: 100px;
+      max-height: 100px;
+      background-color: var(--accent-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 10vw solid transparent;
+      border-right: 10vw solid transparent;
+      border-bottom: 20vw solid var(--secondary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .win-counter {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: white;
+      padding: 10px 15px;
+      border-radius: 50px;
+      box-shadow: var(--box-shadow);
+      font-weight: bold;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+    }
+
+    .win-counter i {
+      margin-left: 8px;
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      header {
+        font-size: 14px;
+      }
+      
+      .info-item {
+        font-size: 0.9rem;
+      }
+      
+      #message {
+        font-size: 1.2rem;
+      }
+      
+      #restart-btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+      }
+      
+      .win-counter {
+        top: 10px;
+        left: 10px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      header {
+        font-size: 12px;
+        padding: 10px;
+      }
+      
+      .game-info {
+        padding: 10px;
+      }
+      
+      #message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <i class="fas fa-info-circle"></i> در این بازی باید دایره‌ای که سیستم انتخاب کرده را حدس بزنید. اگر درست حدس بزنید یک دایره کم می‌شود و اگر اشتباه حدس بزنید یک دایره اضافه می‌شود. اگر به 1 دایره برسید برنده می‌شوید و اگر به 11 دایره برسید می‌بازید. باید سه بار برنده شوید تا تخفیف 59% دریافت کنید!
+  </header>
+
+  <div class="win-counter">
+    <i class="fas fa-trophy"></i>
+    <span id="win-count">پیروزی: 0/3</span>
+  </div>
+
+  <h1><i class="fas fa-gamepad"></i> دتکتیو سرکل</h1>
+
+  <div class="game-info">
+    <div class="info-item">
+      <span>تعداد دایره‌ها:</span>
+      <span id="circles-count">6</span>
+    </div>
+    <div class="info-item">
+      <span>حداکثر دایره‌ها:</span>
+      <span>11</span>
+    </div>
+    <div class="info-item">
+      <span>حداقل دایره‌ها:</span>
+      <span>1</span>
+    </div>
+  </div>
+
+  <div id="game-container"></div>
+  <div id="message">دایره مورد نظر را انتخاب کنید</div>
+  <button id="restart-btn" onclick="restartGame()">
+    <i class="fas fa-redo"></i> شروع مجدد
+  </button>
+
+  <script>
+    let circles = 6;
+    let winCount = 0;
+    const gameContainer = document.getElementById('game-container');
+    const messageDiv = document.getElementById('message');
+    const restartBtn = document.getElementById('restart-btn');
+    const circlesCount = document.getElementById('circles-count');
+    const winCountElement = document.getElementById('win-count');
+
+    function updateCounters() {
+      circlesCount.textContent = circles;
+      winCountElement.textContent = `پیروزی: ${winCount}/3`;
+    }
+
+    function createCircles() {
+      gameContainer.innerHTML = '';
+      for (let i = 1; i <= circles; i++) {
+        const circle = document.createElement('div');
+        circle.className = 'circle';
+        circle.textContent = i;
+        circle.onclick = () => selectCircle(circle);
+        gameContainer.appendChild(circle);
+      }
+      updateCounters();
+    }
+
+    function showShape(shape) {
+      const shapeDiv = document.createElement('div');
+      shapeDiv.className = 'shape';
+      if (shape === 'square') {
+        shapeDiv.innerHTML = '<div class="square"><i class="fas fa-times"></i></div>';
+      } else if (shape === 'triangle') {
+        shapeDiv.innerHTML = '<div class="triangle"><i class="fas fa-check"></i></div>';
+      }
+      gameContainer.innerHTML = '';
+      gameContainer.appendChild(shapeDiv);
+    }
+
+    function selectCircle(selectedCircle) {
+      const correctCircleIndex = Math.floor(Math.random() * circles);
+      const correctCircle = gameContainer.children[correctCircleIndex];
+
+      if (selectedCircle === correctCircle) {
+        circles--;
+        messageDiv.textContent = 'آفرین! انتخاب درست بود. یک دایره کم شد.';
+        messageDiv.style.color = '#00796b';
+      } else {
+        circles++;
+        messageDiv.textContent = 'اشتباه حدس زدید! یک دایره اضافه شد.';
+        messageDiv.style.color = '#e82600';
+      }
+
+      if (circles <= 1) {
+        winCount++;
+        if (winCount >= 3) {
+          messageDiv.innerHTML = 'تبریک! شما 3 بار برنده شدید و تخفیف 59% دریافت کردید!';
+          messageDiv.style.color = '#00796b';
+          setTimeout(() => {
+            window.location.href = 'https://survey.porsline.ir/s/zqIZSNxl';
+          }, 3000);
+        } else {
+          messageDiv.innerHTML = 'تبریک! شما برنده شدید! <i class="fas fa-trophy"></i>';
+          messageDiv.style.color = '#00796b';
+          showShape('triangle');
+          setTimeout(() => {
+            circles = 6;
+            createCircles();
+            messageDiv.textContent = 'دایره مورد نظر را انتخاب کنید';
+            messageDiv.style.color = '#333';
+          }, 2000);
+        }
+      } else if (circles >= 11) {
+        messageDiv.innerHTML = 'متاسفانه باختید! <i class="fas fa-sad-tear"></i>';
+        messageDiv.style.color = '#e82600';
+        showShape('square');
+        restartBtn.style.display = 'block';
+      } else {
+        createCircles();
+      }
+      
+      updateCounters();
+    }
+
+    function restartGame() {
+      circles = 6;
+      messageDiv.textContent = 'دایره مورد نظر را انتخاب کنید';
+      messageDiv.style.color = '#333';
+      restartBtn.style.display = 'none';
+      createCircles();
+    }
+
+    createCircles();
+  </script>
+</body>
+</html>

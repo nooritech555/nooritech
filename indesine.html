@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدمات Adobe InDesign | نوری تک</title>
+  <meta name="description" content="سفارش طراحی حرفه‌ای با Adobe InDesign برای صفحه‌آرایی، کتاب، مجله و بروشور">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #FF7F50;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --text-color: #333;
+      --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @keyframes fadeIn3D {
+      from {
+        opacity: 0;
+        transform: perspective(600px) rotateX(30deg) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: perspective(600px) rotateX(0deg) translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      text-align: center;
+      margin: 0;
+      font-family: 'Vazirmatn', sans-serif;
+      color: var(--text-color);
+      line-height: 1.8;
+      animation: fadeIn3D 0.8s ease-out;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      border-bottom: 3px solid var(--dark-color);
+      padding: 30px;
+      font-size: 28px;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      animation: fadeIn3D 1s ease-out;
+      box-shadow: var(--box-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+      background-size: cover;
+      opacity: 0.1;
+    }
+
+    header i {
+      margin-left: 15px;
+    }
+
+    .txtandpic {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px auto;
+      animation: fadeIn3D 1.2s ease-out;
+      box-shadow: var(--box-shadow);
+      transform-style: preserve-3d;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .txtandpic:hover {
+      transform: perspective(1000px) rotateY(2deg) translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .txtandpic::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    }
+
+    .atxt {
+      text-align: right;
+      color: var(--text-color);
+      font-size: 18px;
+      line-height: 1.8;
+      width: 100%;
+    }
+
+    .atxt strong {
+      color: var(--secondary-color);
+      font-weight: 700;
+    }
+
+    .feature-list {
+      text-align: right;
+      margin: 20px 0;
+      padding-right: 20px;
+    }
+
+    .feature-list li {
+      margin: 10px 0;
+      position: relative;
+      list-style-type: none;
+    }
+
+    .feature-list li::before {
+      content: "•";
+      color: var(--accent-color);
+      font-size: 24px;
+      position: absolute;
+      right: -20px;
+      top: -5px;
+    }
+
+    .bottons {
+      margin: 30px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      animation: fadeIn3D 1.4s ease-out;
+      width: 100%;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(to right, var(--accent-color), #FF6347);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button i {
+      margin-left: 10px;
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, #FF6347, var(--accent-color));
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .button:hover {
+      color: white;
+      transform: perspective(500px) rotateY(10deg) translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: pulse 1.5s infinite;
+    }
+
+    .button:hover::before {
+      right: 0;
+    }
+
+    .price-tag {
+      background: var(--secondary-color);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      display: inline-block;
+      margin: 15px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #footer {
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      border-top: 3px solid var(--dark-color);
+      padding: 30px;
+      margin-top: auto;
+      font-size: 18px;
+      animation: fadeIn3D 1.6s ease-out;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #footer a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    #footer a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-color);
+      transition: var(--transition);
+    }
+
+    #footer a:hover {
+      color: var(--accent-color);
+    }
+
+    #footer a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 24px;
+      margin: 0 10px;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-5px) scale(1.2);
+      color: var(--accent-color);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: var(--primary-color);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--secondary-color);
+      transform: translateY(-5px);
+    }
+
+    @media (max-width: 992px) {
+      header {
+        font-size: 24px;
+      }
+      
+      .button {
+        font-size: 16px;
+        padding: 12px 25px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        font-size: 22px;
+        padding: 20px;
+      }
+      
+      .atxt {
+        font-size: 16px;
+      }
+      
+      .txtandpic {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header {
+        font-size: 20px;
+        padding: 15px;
+      }
+      
+      .atxt {
+        font-size: 15px;
+      }
+      
+      .button {
+        font-size: 15px;
+        padding: 10px 20px;
+        width: 100%;
+      }
+      
+      #footer {
+        font-size: 16px;
+        padding: 20px;
+      }
+      
+      .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        bottom: 20px;
+        left: 20px;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/jpg" href="logo.jpg">
+</head>
+<body>
+  <header>
+    <i class="fas fa-book-open"></i> Adobe InDesign
+  </header>
+
+  <div class="txtandpic">
+    <div class="atxt">
+      <h2><i class="fas fa-paint-brush"></i> Adobe InDesign چیست؟</h2>
+      <p>
+        Adobe InDesign یک نرم‌افزار حرفه‌ای برای صفحه‌آرایی و طراحی انتشارات است که توسط شرکت Adobe توسعه داده شده است. این نرم‌افزار استاندارد صنعتی برای طراحی کتاب، مجله، بروشور، پوستر و سایر اسناد چند صفحه‌ای محسوب می‌شود.
+      </p>
+      
+      <div class="feature-list">
+        <h3>کاربردهای اصلی این دیزاین:</h3>
+        <ul>
+          <li>طراحی و صفحه‌آرایی کتاب و مجله</li>
+          <li>ساخت بروشور و کاتالوگ‌های حرفه‌ای</li>
+          <li>طراحی روزنامه و نشریات ادواری</li>
+          <li>ساخت کارت ویزیت و اقلام تبلیغاتی</li>
+          <li>طراحی پوستر و بنرهای چاپی</li>
+          <li>تهیه اسناد PDF تعاملی</li>
+        </ul>
+      </div>
+      
+      <div class="feature-list">
+        <h3>مزایای استفاده از InDesign:</h3>
+        <ul>
+          <li>مدیریت حرفه‌ای متن‌های طولانی</li>
+          <li>امکان کار با استایل‌های پاراگراف و کاراکتر</li>
+          <li>پشتیبانی از رنگ‌های CMYK برای چاپ</li>
+          <li>یکپارچه‌سازی با دیگر محصولات Adobe</li>
+          <li>خروجی با کیفیت بالا برای چاپ</li>
+          <li>امکان ساخت اسناد تعاملی</li>
+        </ul>
+      </div>
+      
+      <div class="price-tag">
+        <i class="fas fa-tags"></i> قیمت طراحی با InDesign: 700,000 تومان
+      </div>
+    </div>
+    
+    <div class="bottons">
+      <a href="https://survey.porsline.ir/s/GxmQmWCq" class="button">
+        <i class="fas fa-shopping-cart"></i> سفارش طراحی
+      </a>
+      <a href="sefaresh.indd" download class="button">
+        <i class="fas fa-download"></i> دانلود نمونه کار
+      </a>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="social-icons">
+      <a href="https://api.whatsapp.com/send/?phone=09011083220&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+    <p><i class="fas fa-phone"></i> <strong>پشتیبانی: 09011083220</strong></p>
+    <p>تمامی حقوق این سایت برای <a href="index.html"><strong>شرکت نوری تِک</strong></a> می‌باشد.</p>
+    <p>© 2023 - تمامی حقوق محفوظ است</p>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+  <script>
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.querySelector('header');
+      const content = document.querySelector('.txtandpic');
+      const buttons = document.querySelector('.bottons');
+      
+      setTimeout(() => {
+        header.style.animation = 'fadeIn3D 1s ease-out';
+        content.style.animation = 'fadeIn3D 1.2s ease-out';
+        buttons.style.animation = 'fadeIn3D 1.4s ease-out';
+      }, 100);
+    });
+  </script>
+</body>
+</html>
